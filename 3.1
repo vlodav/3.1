@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    system("chcp 1251");
+
+    double a = 1.23;
+    double xn = -0.5;
+    double xk = 0.5;
+    double dx = 0.1;
+
+    double t, sumPositive = 0, productNegative = 1;
+    int count = 0;
+
+    for (double x = xn; x <= xk; x += dx)
+    {
+        t = cbrt(a * x) / 5 + cos(a) + exp(1);
+
+        if (count % 2 == 1)
+        {
+            cout << "x = " << x << ", t = " << t << endl;
+        }
+
+        if (t > 0)
+        {
+            sumPositive += t;
+        }
+        else
+        {
+            productNegative *= t;
+        }
+
+        count++;
+    }
+
+    cout << "Сумма положительных значений t: " << sumPositive << endl;
+    cout << "Произведение отрицательных значений t: " << productNegative << endl;
+    cout << "Количество всех значений t: " << count << endl;
+
+    return 0;
+}
